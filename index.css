@@ -190,10 +190,13 @@ h1 {
 footer {
   position: absolute;
   bottom: 0;
+
   width: 100%;
   height: var(--height-footer);
+  height: 10vh;
   background-color: rgba(0, 0, 0, 0.6);
   color: var(--third-color);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -286,10 +289,16 @@ footer li a:hover {
 }
 
 @media (max-height: 750px) {
-  :root {
-    --height-footer: 40px;
-  }
   footer li a {
     font-size: 1.4rem;
   }
 }
+
+/* @media (max-height: 360px) {
+  footer {
+    display: none;
+  }
+  footer li a {
+    font-size: 1.4rem;
+  }
+} */
