@@ -7,6 +7,8 @@ Calculadora Gráfica es un proyecto que permite graficar series de puntos en el 
 - En forma de puntos.
 - En forma de barras.
 
+En este proyecto se implementó [Chart.js](https://github.com/chartjs/Chart.js)
+
 ## Modo de uso
 
 <img alt="input" width="300" src='https://raw.githubusercontent.com/Johnnie-LC/Calculadora-Graficadora/main/screenshot/planoXY.png' />
