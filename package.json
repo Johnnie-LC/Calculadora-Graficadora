@@ -1,0 +1,26 @@
+{
+  "name": "copia-de-calculadora_grafica",
+  "version": "1.0.0",
+  "description": "# Introducción",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johnnie-LC/Calculadora-Graficadora.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Johnnie-LC/Calculadora-Graficadora/issues"
+  },
+  "homepage": "https://github.com/Johnnie-LC/Calculadora-Graficadora#readme",
+  "devDependencies": {
+    "css-loader": "^6.4.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1"
+  }
+}
