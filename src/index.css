@@ -17,7 +17,7 @@
 
 body {
   width: 100%;
-  background-color: black;
+  background-color: var(--main-color);
 }
 
 .menu-calc-container {
@@ -175,7 +175,7 @@ h1 {
   display: flex;
   justify-content: center;
   padding: 20px;
-  padding-bottom: 80px;
+  /* padding-bottom: 80px; */
 }
 
 .graph-container canvas {
