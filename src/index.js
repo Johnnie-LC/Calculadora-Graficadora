@@ -1,3 +1,5 @@
+import './index.css'
+
 let x = document.getElementById('x')
 let y = document.getElementById('y')
 let addPoint = document.getElementById('addPoint')
