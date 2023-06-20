@@ -6,6 +6,7 @@
   --second-color: #ef6c00;
   --second-color2: #b15002;
   --third-color: #fff3e0;
+  --other-color:blue;
   --height-footer: 65px;
 }
 
@@ -17,7 +18,7 @@
 
 body {
   width: 100%;
-  background-color: var(--main-color);
+  background-color: blue;
 }
 
 .menu-calc-container {

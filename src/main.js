@@ -1,7 +1,8 @@
-import './index.css'
+// import './index.css'
 
 let x = document.getElementById('x')
 let y = document.getElementById('y')
+console.log({x,y})
 let addPoint = document.getElementById('addPoint')
 let deletePoints = document.getElementById('deletePoints')
 let planoXY = document.getElementById('planoXY')
@@ -43,26 +44,31 @@ const config = {
 }
 
 var myChart = new Chart(document.getElementById('myChart'), config)
+// if (myChart) {
+//   myChart.destroy();
+// }
+if(planoXY){
+  planoXY.addEventListener('click', () => {
+    if (!planoXY.classList.contains('active')) {
+      bar.classList.remove('active')
+      planoXY.classList.add('active')
+    }
+    myChart.data.datasets[0].label = 'Plano XY'
+    config.type = 'scatter'
+    myChart.update()
+  })
+  
+  bar.addEventListener('click', () => {
+    if (!bar.classList.contains('active')) {
+      planoXY.classList.remove('active')
+      bar.classList.add('active')
+    }
+    myChart.data.datasets[0].label = 'Histograma'
+    config.type = 'bar'
+    myChart.update()
+  })
+}
 
-planoXY.addEventListener('click', () => {
-  if (!planoXY.classList.contains('active')) {
-    bar.classList.remove('active')
-    planoXY.classList.add('active')
-  }
-  myChart.data.datasets[0].label = 'Plano XY'
-  config.type = 'scatter'
-  myChart.update()
-})
-
-bar.addEventListener('click', () => {
-  if (!bar.classList.contains('active')) {
-    planoXY.classList.remove('active')
-    bar.classList.add('active')
-  }
-  myChart.data.datasets[0].label = 'Histograma'
-  config.type = 'bar'
-  myChart.update()
-})
 
 const scaleConfig = (offset) => {
   config.options.scales.x.min = -1 * offset
