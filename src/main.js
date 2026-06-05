@@ -1,13 +1,19 @@
 import './index.css'
 
-let x = document.getElementById('x')
-let y = document.getElementById('y')
-let addPoint = document.getElementById('addPoint')
-let deletePoints = document.getElementById('deletePoints')
-let planoXY = document.getElementById('planoXY')
-let bar = document.getElementById('bar')
+const $ = (id) => {
+  const el = document.getElementById(id)
+  if (!el) throw new Error(`Element #${id} not found`)
+  return el
+}
 
-let data = {
+const x = $('x')
+const y = $('y')
+const addPoint = $('addPoint')
+const deletePoints = $('deletePoints')
+const planoXY = $('planoXY')
+const bar = $('bar')
+
+const data = {
   datasets: [
     {
       data: [],
@@ -42,7 +48,7 @@ const config = {
   },
 }
 
-var myChart = new Chart(document.getElementById('myChart'), config)
+const myChart = new Chart(document.getElementById('myChart'), config)
 
 planoXY.addEventListener('click', () => {
   if (!planoXY.classList.contains('active')) {
@@ -73,7 +79,7 @@ const scaleConfig = (offset) => {
   config.options.scales.y.max = offset
 }
 
-const getInitRender = (xValue, yValue, offset) => {
+const resetChart = (xValue, yValue, offset) => {
   x.value = xValue
   y.value = yValue
 
@@ -100,9 +106,12 @@ const changeScaleConfig = (scales, data, offset) => {
 }
 
 addPoint.addEventListener('click', () => {
+  const xVal = parseFloat(x.value)
+  const yVal = parseFloat(y.value)
+  if (isNaN(xVal) || isNaN(yVal)) return
   myChart.data.datasets[0].data.push({
-    x: parseFloat(x.value),
-    y: parseFloat(y.value),
+    x: xVal,
+    y: yVal,
   })
 
   changeScaleConfig(config.options.scales, myChart.data.datasets[0].data, 1)
@@ -111,7 +120,7 @@ addPoint.addEventListener('click', () => {
 })
 
 deletePoints.addEventListener('click', () => {
-  getInitRender(0, 0, 1)
+  resetChart(0, 0, 1)
 })
 
-getInitRender(0, 0, 1)
+resetChart(0, 0, 1)
