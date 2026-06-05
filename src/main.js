@@ -30,7 +30,7 @@ function createScaleApplyData(label, options = {}) {
 
 function createMultiColorApplyData(label) {
   return (chart, records) => {
-    chart.data.labels = records.map((_, i) => `Punto ${i + 1}`)
+    chart.data.labels = records.map((_, i) => `Point ${i + 1}`)
     chart.data.datasets[0].label = label
     chart.data.datasets[0].data = records
     chart.data.datasets[0].backgroundColor = records.map((_, i) => COLORS[i % COLORS.length])
@@ -41,7 +41,7 @@ function createMultiColorApplyData(label) {
 const chartTypes = [
   {
     id: 'planoXY',
-    label: 'Plano XY',
+    label: 'Scatter',
     chartJsType: 'scatter',
     inputFields: [
       { name: 'x', label: 'X' },
@@ -52,7 +52,7 @@ const chartTypes = [
       x: parseFloat(inputs.x.value),
       y: parseFloat(inputs.y.value),
     }),
-    applyData: createScaleApplyData('Plano XY'),
+    applyData: createScaleApplyData('Scatter'),
   },
   {
     id: 'bar',
@@ -67,11 +67,11 @@ const chartTypes = [
       x: parseFloat(inputs.x.value),
       y: parseFloat(inputs.y.value),
     }),
-    applyData: createScaleApplyData('Histograma'),
+    applyData: createScaleApplyData('Bar'),
   },
   {
     id: 'line',
-    label: 'Linea',
+    label: 'Line',
     chartJsType: 'line',
     inputFields: [
       { name: 'x', label: 'X' },
@@ -82,41 +82,41 @@ const chartTypes = [
       x: parseFloat(inputs.x.value),
       y: parseFloat(inputs.y.value),
     }),
-    applyData: createScaleApplyData('Linea', { tension: 0.3 }),
+    applyData: createScaleApplyData('Line', { tension: 0.3 }),
   },
   {
     id: 'pie',
-    label: 'Pastel',
+    label: 'Pie',
     chartJsType: 'pie',
     inputFields: [
-      { name: 'value', label: 'Valor' },
+      { name: 'value', label: 'Value' },
     ],
     hasScales: false,
     createDataPoint: (inputs) => parseFloat(inputs.value.value),
-    applyData: createMultiColorApplyData('Pastel'),
+    applyData: createMultiColorApplyData('Pie'),
   },
   {
     id: 'doughnut',
-    label: 'Dona',
+    label: 'Doughnut',
     chartJsType: 'doughnut',
     inputFields: [
-      { name: 'value', label: 'Valor' },
+      { name: 'value', label: 'Value' },
     ],
     hasScales: false,
     createDataPoint: (inputs) => parseFloat(inputs.value.value),
-    applyData: createMultiColorApplyData('Dona'),
+    applyData: createMultiColorApplyData('Doughnut'),
   },
   {
     id: 'radar',
     label: 'Radar',
     chartJsType: 'radar',
     inputFields: [
-      { name: 'x', label: 'Etiqueta', type: 'text' },
-      { name: 'y', label: 'Valor', type: 'number' },
+      { name: 'x', label: 'Label', type: 'text' },
+      { name: 'y', label: 'Value', type: 'number' },
     ],
     hasScales: false,
     createDataPoint: (inputs) => ({
-      label: inputs.x.value || `Punto ${Date.now()}`,
+      label: inputs.x.value || `Point ${Date.now()}`,
       value: parseFloat(inputs.y.value),
     }),
     applyData: (chart, records) => {
@@ -132,7 +132,7 @@ const chartTypes = [
     label: 'Polar',
     chartJsType: 'polarArea',
     inputFields: [
-      { name: 'value', label: 'Valor' },
+      { name: 'value', label: 'Value' },
     ],
     hasScales: false,
     createDataPoint: (inputs) => parseFloat(inputs.value.value),
@@ -140,12 +140,12 @@ const chartTypes = [
   },
   {
     id: 'bubble',
-    label: 'Burbuja',
+    label: 'Bubble',
     chartJsType: 'bubble',
     inputFields: [
       { name: 'x', label: 'X' },
       { name: 'y', label: 'Y' },
-      { name: 'r', label: 'Radio' },
+      { name: 'r', label: 'Radius' },
     ],
     hasScales: true,
     createDataPoint: (inputs) => ({
@@ -153,7 +153,7 @@ const chartTypes = [
       y: parseFloat(inputs.y.value),
       r: parseFloat(inputs.r.value) || 5,
     }),
-    applyData: createScaleApplyData('Burbuja'),
+    applyData: createScaleApplyData('Bubble'),
   },
 ]
 
